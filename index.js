@@ -1,14 +1,13 @@
 import express from 'express';
 import stringRoutes from './src/routes/strings.js';
-import storage from './src/services/storage.js';   // ✅ make sure you import this
-import path from 'path';                            // ✅ import path
-
+import storage from './src/services/storage.js';   
+import path from 'path';                            
 const app = express();
 app.use(express.json());
 
 // Initialize DB
-const dbPath = path.resolve('./data/strings.db');   // Path to the database file
-await storage.init(dbPath);                         // Initialize the DB before routes
+const dbPath = path.resolve('./data/strings.db');   
+await storage.init(dbPath);                       
 
 app.use('/strings', stringRoutes);
 
